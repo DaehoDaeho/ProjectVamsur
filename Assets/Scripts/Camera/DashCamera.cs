@@ -1,6 +1,6 @@
-using System.Threading;
 using UnityEngine;
 
+[DefaultExecutionOrder(100)] // CameraFollow(LateUpdate)보다 '늦게' 실행되도록
 public class DashCamera : MonoBehaviour
 {
     [SerializeField]
@@ -13,90 +13,86 @@ public class DashCamera : MonoBehaviour
     private float zoomAmount = 0.4f;
 
     [SerializeField]
-    private float zoomDuration = 0.1f;
+    private float zoomDuration = 0.12f;
 
     [SerializeField]
-    private float shakeAmplifier = 0.15f;
+    private float shakeAmplitude = 0.15f;
 
     [SerializeField]
-    private float shakeDuration = 0.1f;
-
-    [SerializeField]
-    private CameraFollow cameraFollow;
+    private float shakeDuration = 0.10f;
 
     private bool wasDashing = false;
     private float zoomTimer = 0.0f;
     private float shakeTimer = 0.0f;
-    private float originalSize = 5.0f;
-    private Vector3 originalPos;
+
+    private float dashBaseOrthoSize = 5.0f;
 
     private void Awake()
     {
-        originalSize = targetCamera.orthographicSize;
-        originalPos = transform.localPosition;
-        //originalPos = transform.position;
+        if (targetCamera == null)
+        {
+            targetCamera = Camera.main;
+        }
+
+        if (targetCamera != null)
+        {
+            dashBaseOrthoSize = targetCamera.orthographicSize;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        bool isDashing = dash.GetIsDashing();
+        Vector3 basePosition = transform.position;
 
-        if(wasDashing == false && isDashing == true)
+        bool isDashing = false;
+
+        if (dash != null)
+        {
+            isDashing = dash.GetIsDashing();
+        }
+
+        if (wasDashing == false && isDashing == true)
         {
             zoomTimer = zoomDuration;
             shakeTimer = shakeDuration;
-            cameraFollow.enabled = false;
+
+            if (targetCamera != null)
+            {
+                dashBaseOrthoSize = targetCamera.orthographicSize;
+            }
         }
 
-        if(zoomTimer > 0.0f && targetCamera != null)
+        if (targetCamera != null && zoomTimer > 0.0f)
         {
-            zoomTimer -= Time.deltaTime;
+            zoomTimer = zoomTimer - Time.deltaTime;
+
             float t = 1.0f - (zoomTimer / zoomDuration);
 
-            if(t < 0.0f)
+            if (t < 0.0f)
             {
                 t = 0.0f;
             }
 
-            if(t > 1.0f)
+            if (t > 1.0f)
             {
                 t = 1.0f;
             }
 
-            float size = Mathf.Lerp(originalSize - zoomAmount, originalSize, t);
+            float size = Mathf.Lerp(dashBaseOrthoSize - zoomAmount, dashBaseOrthoSize, t);
             targetCamera.orthographicSize = size;
         }
-        else
+        if (shakeTimer > 0.0f)
         {
-            if(wasDashing == true)
-            {
-                targetCamera.orthographicSize = originalSize;
-                transform.position = originalPos;
-                cameraFollow.enabled = true;
-            }
-        }
+            shakeTimer = shakeTimer - Time.deltaTime;
 
-        if(shakeTimer > 0.0f)
-        {
-            //shakeTimer -= Time.deltaTime;
+            float strength = shakeTimer / shakeDuration;
 
-            //float strength = shakeTimer / shakeDuration;
-            //float dx = (Random.value * 2.0f - 1.0f) * shakeAmplifier * strength;
-            //float dy = (Random.value * 2.0f - 1.0f) * shakeAmplifier * strength;
+            float dx = (Random.value * 2.0f - 1.0f) * shakeAmplitude * strength;
+            float dy = (Random.value * 2.0f - 1.0f) * shakeAmplitude * strength;
 
-            //transform.localPosition = originalPos + new Vector3(dx, dy, 0.0f);
-            //transform.position = originalPos + new Vector3(dx, dy, 0.0f);
-        }
-        else
-        {
-            if(wasDashing == true)
-            {
-                //transform.localPosition = originalPos;
-                //transform.position = originalPos;
-            }
+            Vector3 offset = new Vector3(dx, dy, 0.0f);
 
-            //cameraFollow.enabled = true;
+            transform.position = basePosition + offset;
         }
 
         wasDashing = isDashing;
