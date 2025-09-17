@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 54996116}
   - component: {fileID: 54996115}
   - component: {fileID: 54996118}
+  - component: {fileID: 54996119}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -274,6 +275,25 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   mapBounds: {fileID: 16085845}
   cam: {fileID: 54996116}
+--- !u!114 &54996119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54996114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b33c446e78cb3243a7176dec6980dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 1410871280}
+  targetCamera: {fileID: 54996116}
+  zoomAmount: 0.4
+  zoomDuration: 0.1
+  shakeAmplifier: 0.15
+  shakeDuration: 0.1
+  cameraFollow: {fileID: 54996118}
 --- !u!1 &126287000
 GameObject:
   m_ObjectHideFlags: 0
@@ -4257,6 +4277,7 @@ GameObject:
   - component: {fileID: 1410871278}
   - component: {fileID: 1410871281}
   - component: {fileID: 1410871280}
+  - component: {fileID: 1410871282}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4507,6 +4528,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7538488db7894d14782bba35b0eeb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1410871282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410871271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815cf0588386c7045983a7de6c848e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 1410871280}
+  sourceSprite: {fileID: 1410871274}
+  spawnIntervalSeconds: 0.05
+  ghostLifetimeSeconds: 0.25
 --- !u!1 &1693240871
 GameObject:
   m_ObjectHideFlags: 0

@@ -105,4 +105,9 @@ public class DashAbility : MonoBehaviour
 
         topDownMover.enabled = true;
     }
+
+    public bool GetIsDashing()
+    {
+        return isDashing;
+    }
 }
