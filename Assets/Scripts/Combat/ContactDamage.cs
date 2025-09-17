@@ -15,6 +15,15 @@ public class ContactDamage : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player") == true)
         {
+            InvulnerabilityWindow inv = collision.GetComponent<InvulnerabilityWindow>();
+            if (inv != null)
+            {
+                if (inv.IsInvulnerable() == true)
+                {
+                    return;
+                }
+            }
+
             PlayerStats playerStats = collision.GetComponent<PlayerStats>();
             if(playerStats != null)
             {

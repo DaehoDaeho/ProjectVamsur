@@ -4255,6 +4255,8 @@ GameObject:
   - component: {fileID: 1410871277}
   - component: {fileID: 1410871279}
   - component: {fileID: 1410871278}
+  - component: {fileID: 1410871281}
+  - component: {fileID: 1410871280}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4473,6 +4475,38 @@ MonoBehaviour:
   sr: {fileID: 1410871274}
   smoothing: 10
   animator: {fileID: 1410871278}
+--- !u!114 &1410871280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410871271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0b86a7dbb351947b6e4ff98c8565d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 15
+  dashDurationSeconds: 0.2
+  dashCooldownSeconds: 1
+  invulnerabilitySeconds: 0.5
+  topDownMover: {fileID: 1410871275}
+  spriteRenderer: {fileID: 1410871274}
+  invulnerabilityWindow: {fileID: 1410871281}
+  rigidbody2D: {fileID: 1410871276}
+--- !u!114 &1410871281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410871271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7538488db7894d14782bba35b0eeb9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1693240871
 GameObject:
   m_ObjectHideFlags: 0
