@@ -29,7 +29,7 @@ public class EnemySpawnerSimple : MonoBehaviour
             {
                 TrySpawnOne();
                 accumulatedSeconds = 0.0f;
-                isRunning = false;
+                //isRunning = false;
             }
         }
     }

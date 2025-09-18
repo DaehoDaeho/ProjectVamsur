@@ -26,6 +26,9 @@ public class DashAbility : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
+    [SerializeField]
+    private TrailRenderer tr;
+
     private bool isDashing = false;
     private float dashEndTime = 0.0f;
     private float nextAvailableDashTime = 0.0f;
@@ -97,6 +100,9 @@ public class DashAbility : MonoBehaviour
 
         topDownMover.enabled = false;
         invulnerabilityWindow.GrantInvulnerability(invulnerabilitySeconds);
+
+        tr.Clear();
+        tr.emitting = true;
     }
 
     void EndDash()
@@ -104,6 +110,8 @@ public class DashAbility : MonoBehaviour
         isDashing = false;
 
         topDownMover.enabled = true;
+
+        tr.emitting = false;
     }
 
     public bool GetIsDashing()
