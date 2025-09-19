@@ -4279,6 +4279,7 @@ GameObject:
   - component: {fileID: 1410871282}
   - component: {fileID: 1410871283}
   - component: {fileID: 1410871284}
+  - component: {fileID: 1410871285}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4553,7 +4554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410871271}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe5ec83d17f66747ad7a1c168731799, type: 3}
   m_Name: 
@@ -4673,6 +4674,25 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1410871285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410871271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a4971c516b31144b220a38a14a2138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData:
+  - {fileID: 11400000, guid: dc8f79eb3146a0d41ab76fe9691d614d, type: 2}
+  - {fileID: 11400000, guid: 7746ca423a8bad8458582447f1c38afb, type: 2}
+  projectilePrefab: {fileID: 8832738406843431743, guid: aedb74c141b7a9841a6e4e826ff9666e, type: 3}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1693240871
 GameObject:
   m_ObjectHideFlags: 0
