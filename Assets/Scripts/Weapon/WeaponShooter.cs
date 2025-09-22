@@ -11,6 +11,12 @@ public class WeaponShooter : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayerMask;
 
+    [SerializeField]
+    private bool useLightning;
+
+    [SerializeField]
+    private Lightning lightning;
+
     private float lastFireTime = -9999.0f;
 
     private int currentWeaponIndex = 0;
@@ -32,6 +38,16 @@ public class WeaponShooter : MonoBehaviour
     void TryFire()
     {
         Transform nearest = FindNearestEnemy();
+
+        if(useLightning == true)
+        {
+            if(nearest != null)
+            {
+                lightning.StrikeAt(nearest.position);
+            }
+            
+            return;
+        }
 
         Vector2 baseDir;
 
