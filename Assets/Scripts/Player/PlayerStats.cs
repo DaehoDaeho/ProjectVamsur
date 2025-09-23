@@ -6,6 +6,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private float maxHp = 100.0f;
 
+    [SerializeField]
+    private SimpleHPUI simpleHPUI;
+
     private float currentHp = 0.0f;
 
     private bool isAlive = true;
@@ -35,6 +38,11 @@ public class PlayerStats : MonoBehaviour
             if(OnChangedHP != null)
             {
                 OnChangedHP.Invoke(currentHp, maxHp);
+            }
+
+            if(simpleHPUI != null)
+            {
+                simpleHPUI.UpdateHPGage(currentHp, maxHp);
             }
         }
     }

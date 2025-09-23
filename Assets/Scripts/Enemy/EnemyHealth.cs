@@ -8,6 +8,18 @@ public class EnemyHealth : MonoBehaviour
     private float currentHp = 0.0f;
     private bool isAlive = true;
 
+    [SerializeField]
+    private SpriteHitFlash spriteHitFlash;
+
+    [SerializeField]
+    private SimpleSound simpleSound;
+
+    [SerializeField]
+    private float flashDuration = 0.05f;
+
+    [SerializeField]
+    private SimpleHPUI enemyHP;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +32,21 @@ public class EnemyHealth : MonoBehaviour
         if(isAlive == true)
         {
             currentHp -= amount;
+
+            if(spriteHitFlash != null)
+            {
+                spriteHitFlash.TriggerFlash(flashDuration);
+            }
+
+            if(simpleSound != null)
+            {
+                simpleSound.PlayHitAt(transform.position);
+            }
+
+            if(enemyHP != null)
+            {
+                enemyHP.UpdateHPGage(currentHp, maxHp);
+            }
 
             if(currentHp <= 0.0f)
             {

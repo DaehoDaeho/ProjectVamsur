@@ -39,15 +39,15 @@ public class WeaponShooter : MonoBehaviour
     {
         Transform nearest = FindNearestEnemy();
 
-        if(useLightning == true)
-        {
-            if(nearest != null)
-            {
-                lightning.StrikeAt(nearest.position);
-            }
+        //if(useLightning == true)
+        //{
+        //    if(nearest != null)
+        //    {
+        //        lightning.StrikeAt(nearest.position);
+        //    }
             
-            return;
-        }
+        //    return;
+        //}
 
         Vector2 baseDir;
 

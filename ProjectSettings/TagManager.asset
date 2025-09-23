@@ -48,5 +48,8 @@ TagManager:
   - name: Prop
     uniqueID: 2564941541
     locked: 0
+  - name: UI
+    uniqueID: 3804026311
+    locked: 0
   m_RenderingLayers:
   - Default
