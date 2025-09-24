@@ -6,7 +6,8 @@ public class WeaponShooter : MonoBehaviour
     private WeaponDataSO[] weaponData;
 
     [SerializeField]
-    private GameObject projectilePrefab;
+    private PrefabPool projectilePool;
+    //private GameObject projectilePrefab;
 
     [SerializeField]
     private LayerMask enemyLayerMask;
@@ -95,9 +96,16 @@ public class WeaponShooter : MonoBehaviour
     {
         Vector3 spawnPos = transform.position + new Vector3(directionUnit.x, directionUnit.y, 0.0f) * weaponData[currentWeaponIndex].muzzleOffset;
 
-        GameObject go = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-        ProjectileStandard p = go.GetComponent<ProjectileStandard>();
-        if(p != null)
+        //GameObject go = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        GameObject go = projectilePool.Get(spawnPos, Quaternion.identity);
+        if(go == null)
+        {
+            return;
+        }
+
+        //ProjectileStandard p = go.GetComponent<ProjectileStandard>();
+        ProjectileStandardPooled p = go.GetComponent<ProjectileStandardPooled>();
+        if (p != null)
         {
             p.Setup(directionUnit, weaponData[currentWeaponIndex].damage, weaponData[currentWeaponIndex].projectileSpeed, weaponData[currentWeaponIndex].projectileLifeSeconds, weaponData[currentWeaponIndex].pierceCount);
         }

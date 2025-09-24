@@ -17,7 +17,8 @@ public class SpawnerEnemyRing : MonoBehaviour
     private Camera targetCamera;
 
     [SerializeField]
-    private GameObject enemyPrefab;
+    //private GameObject enemyPrefab;
+    private PrefabPool enemyPrefabPool;
 
     [SerializeField]
     private float spawnIntervalSeconds = 1.0f;
@@ -91,7 +92,13 @@ public class SpawnerEnemyRing : MonoBehaviour
 
             if (found == true)
             {
-                GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+                //GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+                GameObject go = enemyPrefabPool.Get(pos, Quaternion.identity);
+
+                if(go == null)
+                {
+                    return;
+                }
 
                 EnemySimple enemySimple = go.GetComponent<EnemySimple>();
                 if (enemySimple != null)
@@ -108,7 +115,8 @@ public class SpawnerEnemyRing : MonoBehaviour
     {
         for(int i=aliveList.Count-1; i>=0; --i)
         {
-            if (aliveList[i] == null)
+            //if (aliveList[i] == null)
+            if (aliveList[i].activeSelf == false)
             {
                 aliveList.RemoveAt(i);
             }

@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1410871272}
   targetCamera: {fileID: 54996116}
-  enemyPrefab: {fileID: 6515234211590476756, guid: 7d336f78ce4b1ae43a46815c96cf81c7, type: 3}
+  enemyPrefabPool: {fileID: 1714094455}
   spawnIntervalSeconds: 1
   spawnsPerTick: 1
   maxAlive: 30
@@ -4536,6 +4536,53 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &1079615832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079615834}
+  - component: {fileID: 1079615833}
+  m_Layer: 0
+  m_Name: Pool_Projectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079615833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079615832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a928739d99f6a0146b2c8f2d734af33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8832738406843431743, guid: aedb74c141b7a9841a6e4e826ff9666e, type: 3}
+  prewarmCount: 50
+  allowExpand: 1
+--- !u!4 &1079615834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079615832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0969477, y: 0.7915858, z: -0.0095619345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1410871271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4971,7 +5018,7 @@ MonoBehaviour:
   weaponData:
   - {fileID: 11400000, guid: dc8f79eb3146a0d41ab76fe9691d614d, type: 2}
   - {fileID: 11400000, guid: 7746ca423a8bad8458582447f1c38afb, type: 2}
-  projectilePrefab: {fileID: 8832738406843431743, guid: aedb74c141b7a9841a6e4e826ff9666e, type: 3}
+  projectilePool: {fileID: 1079615833}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -5142,6 +5189,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693240871}
   m_CullTransparentMesh: 1
+--- !u!1 &1714094454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714094456}
+  - component: {fileID: 1714094455}
+  m_Layer: 0
+  m_Name: Pool_Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1714094455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714094454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a928739d99f6a0146b2c8f2d734af33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6515234211590476756, guid: 7d336f78ce4b1ae43a46815c96cf81c7, type: 3}
+  prewarmCount: 50
+  allowExpand: 1
+--- !u!4 &1714094456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714094454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0969477, y: 0.7915858, z: -0.0095619345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1757733062
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,3 +5450,5 @@ SceneRoots:
   - {fileID: 918440134}
   - {fileID: 2013592039}
   - {fileID: 1986466413}
+  - {fileID: 1079615834}
+  - {fileID: 1714094456}

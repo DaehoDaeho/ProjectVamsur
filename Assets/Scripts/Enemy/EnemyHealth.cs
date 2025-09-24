@@ -20,11 +20,25 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private SimpleHPUI enemyHP;
 
+    [SerializeField]
+    private PooledObject pooled;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InitData();
+    }
+
+    private void OnEnable()
+    {
+        InitData();
+    }
+
+    void InitData()
+    {
         currentHp = maxHp;
         isAlive = true;
+        enemyHP.UpdateHPGage(currentHp, maxHp);
     }
 
     public void TakeDamage(float amount)
@@ -59,6 +73,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        pooled.ReturnToPool();
     }
 }

@@ -17,8 +17,8 @@ MonoBehaviour:
   damage: 20
   projectileSpeed: 10
   projectileLifeSeconds: 3
-  pierceCount: 3
+  pierceCount: 0
   muzzleOffset: 0.6
-  multishotCount: 36
-  totalSpreadAngleDegrees: 360
+  multishotCount: 5
+  totalSpreadAngleDegrees: 60
   fireEventIfNoTarget: 0
