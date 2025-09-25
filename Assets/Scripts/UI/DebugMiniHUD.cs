@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
+using TMPro;
 
 /// <summary>
 /// 좌상단 텍스트 HUD: Time MM:SS / FPS(EMA) / Enemies.
@@ -14,7 +15,7 @@ public class DebugMiniHUD : MonoBehaviour
     private SpawnerEnemyRing spawner;
 
     [SerializeField]
-    private Text uiText;
+    private TMP_Text uiText;
 
     private float fpsSmoothed = 60.0f;
 
