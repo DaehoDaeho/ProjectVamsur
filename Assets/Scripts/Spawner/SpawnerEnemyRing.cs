@@ -205,4 +205,39 @@ public class SpawnerEnemyRing : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
+
+    public void SetDynamicMaxAlive(int value)
+    {
+        if (value > 0)
+        {
+            maxAlive = value;
+        }
+    }
+
+    public void SetDynamicSpawnsPerTick(int value)
+    {
+        if (value > 0)
+        {
+            spawnsPerTick = value;
+        }
+    }
+
+    public int GetAliveCount()
+    {
+        int count = 0;
+
+        for (int i = aliveList.Count - 1; i >= 0; i = i - 1)
+        {
+            if (aliveList[i] == null)
+            {
+                aliveList.RemoveAt(i);
+            }
+            else
+            {
+                count = count + 1;
+            }
+        }
+
+        return count;
+    }
 }
