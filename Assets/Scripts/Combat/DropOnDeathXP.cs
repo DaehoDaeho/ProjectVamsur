@@ -16,6 +16,8 @@ public class DropOnDeathXP : MonoBehaviour
 
     public void SpawnOrb()
     {
+        orbCount = Random.Range(1, 4);
+
         for(int i=0; i<orbCount; ++i)
         {
             float angleDeg = (360.0f / orbCount) * i;
