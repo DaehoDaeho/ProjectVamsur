@@ -23,6 +23,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private PooledObject pooled;
 
+    [SerializeField]
+    private DropOnDeathXP dropXp;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -74,6 +77,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         //Destroy(gameObject);
+        dropXp.SpawnOrb();
         pooled.ReturnToPool();
     }
 }

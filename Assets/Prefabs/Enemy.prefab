@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 8197989242072524147}
   - component: {fileID: -18570216987817745}
   - component: {fileID: -9122399631876021049}
+  - component: {fileID: 1126063092532902222}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -469,6 +470,7 @@ MonoBehaviour:
   flashDuration: 0.05
   enemyHP: {fileID: -18570216987817745}
   pooled: {fileID: -9122399631876021049}
+  dropXp: {fileID: 1126063092532902222}
 --- !u!114 &4464636841408520442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,3 +525,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5b89a355736a342b2ac6d539a2b8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1126063092532902222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6515234211590476756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b385460b1f7684c45ac8406393c35867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpOrbPrefab: {fileID: 7175429241642704114, guid: 84ae3ae0d55e6fe4ab7c2f7f63836b35, type: 3}
+  orbCount: 3
+  xpPerOrb: 1
+  scatterRadius: 0.5
