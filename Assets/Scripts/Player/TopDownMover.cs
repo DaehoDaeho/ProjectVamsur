@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TopDownMover : MonoBehaviour
@@ -20,6 +21,8 @@ public class TopDownMover : MonoBehaviour
     private Vector2 targetVelocity = Vector2.zero;
     private Vector2 currentVelocity = Vector2.zero;
 
+    private float moveSpeedScale = 1.0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +36,7 @@ public class TopDownMover : MonoBehaviour
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = Input.GetAxis("Vertical");
 
-        targetVelocity = moveInput.normalized * maxSpeed;
+        targetVelocity = moveInput.normalized * maxSpeed * moveSpeedScale;
     }
 
     private void FixedUpdate()
@@ -72,5 +75,13 @@ public class TopDownMover : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
         rigidbody2D.MovePosition(newPosition);
+    }
+
+    public void MultiplyMoveSpeed(float scale)
+    {
+        if(scale > 0.0f)
+        {
+            moveSpeedScale *= scale;
+        }
     }
 }

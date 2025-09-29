@@ -22,6 +22,9 @@ public class WeaponShooter : MonoBehaviour
 
     private int currentWeaponIndex = 0;
 
+    private float fireIntervalScale = 1.0f;
+    private float damageScale = 1.0f;
+
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +33,9 @@ public class WeaponShooter : MonoBehaviour
             currentWeaponIndex = currentWeaponIndex == 0 ? 1 : 0;
         }
 
-        if(Time.time - lastFireTime >= weaponData[currentWeaponIndex].fireIntervalSeconds)
+        float finalInterval = weaponData[currentWeaponIndex].fireIntervalSeconds * fireIntervalScale;
+
+        if (Time.time - lastFireTime >= finalInterval)
         {
             TryFire();
         }
@@ -107,7 +112,9 @@ public class WeaponShooter : MonoBehaviour
         ProjectileStandardPooled p = go.GetComponent<ProjectileStandardPooled>();
         if (p != null)
         {
-            p.Setup(directionUnit, weaponData[currentWeaponIndex].damage, weaponData[currentWeaponIndex].projectileSpeed, weaponData[currentWeaponIndex].projectileLifeSeconds, weaponData[currentWeaponIndex].pierceCount);
+            float finalDamage = weaponData[currentWeaponIndex].damage * damageScale;
+
+            p.Setup(directionUnit, finalDamage, weaponData[currentWeaponIndex].projectileSpeed, weaponData[currentWeaponIndex].projectileLifeSeconds, weaponData[currentWeaponIndex].pierceCount);
         }
     }
 
@@ -156,5 +163,21 @@ public class WeaponShooter : MonoBehaviour
         }
 
         return best;
+    }
+
+    public void MultiplyFireInterval(float scale)
+    {
+        if (scale > 0.0f)
+        {
+            fireIntervalScale *= scale;
+        }
+    }
+
+    public void MultiplyDamage(float scale)
+    {
+        if (scale > 0.0f)
+        {
+            damageScale *= scale;
+        }
     }
 }

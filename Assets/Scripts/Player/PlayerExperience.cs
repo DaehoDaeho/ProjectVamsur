@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PlayerExperience : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlayerExperience : MonoBehaviour
     [SerializeField]
     private TMP_Text textXp;
 
+    public event Action<int> OnLevelUp;
+
     private void Start()
     {
         UpdateBar();
@@ -38,6 +41,11 @@ public class PlayerExperience : MonoBehaviour
             level = level + 1;
             xpForNext = xpForNext + xpIncreasePerLevel;
             UpdateBar();
+
+            if(OnLevelUp != null)
+            {
+                OnLevelUp.Invoke(level);
+            }
         }
     }
 

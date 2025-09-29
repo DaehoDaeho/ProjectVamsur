@@ -47,6 +47,25 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void AddMaxHp(int value)
+    {
+        if(value > 0)
+        {
+            maxHp = maxHp + value;
+            currentHp += value;
+
+            if(currentHp > maxHp)
+            {
+                currentHp = maxHp;
+            }
+
+            if (simpleHPUI != null)
+            {
+                simpleHPUI.UpdateHPGage(currentHp, maxHp);
+            }
+        }
+    }
+
     public bool GetIsAlive()
     {
         return isAlive;
