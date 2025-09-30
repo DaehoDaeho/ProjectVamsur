@@ -83,13 +83,13 @@ public class LevelUpPopup : MonoBehaviour
             return;
         }
 
-        // [무엇] 이번 팝업에서 '서로 다른 3장'을 뽑을 때 중복을 막기 위한 set.
+        // 이번 팝업에서 '서로 다른 3장'을 뽑을 때 중복을 막기 위한 set.
         HashSet<string> used = new HashSet<string>();
 
-        // [무엇] 3장 뽑기(가중치 희귀도 → 유효 카드 랜덤) 시도.
+        // 3장 뽑기(가중치 희귀도 → 유효 카드 랜덤) 시도.
         int filled = 0;
 
-        for (int i = 0; i < pick.Length; i = i + 1)
+        for (int i = 0; i < pick.Length; ++i)
         {
             LevelUpOptionSO p = PickOneUnique(used);
 
@@ -97,7 +97,7 @@ public class LevelUpPopup : MonoBehaviour
             {
                 pick[i] = p;
 
-                // [무엇] 중복 방지 키 = optionId가 있으면 그걸 사용. 없으면 title로 폴백.
+                // 중복 방지 키 = optionId가 있으면 그걸 사용. 없으면 title로 폴백.
                 string key = string.IsNullOrEmpty(p.optionId) == false ? p.optionId : p.title;
 
                 used.Add(key);
@@ -112,12 +112,12 @@ public class LevelUpPopup : MonoBehaviour
 
         if (filled == 0)
         {
-            // [무엇] 제시할 카드가 전혀 없으면(모두 만렙 등) 그냥 스킵.
+            // 제시할 카드가 전혀 없으면(모두 만렙 등) 그냥 스킵.
             return;
         }
 
         // ===== UI 바인딩 =====
-        for (int i = 0; i < pick.Length; i = i + 1)
+        for (int i = 0; i < pick.Length; ++i)
         {
             if (title != null && i < title.Length && title[i] != null)
             {
@@ -125,7 +125,7 @@ public class LevelUpPopup : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < pick.Length; i = i + 1)
+        for (int i = 0; i < pick.Length; ++i)
         {
             if (desc != null && i < desc.Length && desc[i] != null)
             {
@@ -158,7 +158,7 @@ public class LevelUpPopup : MonoBehaviour
             }
         }
 
-        // [무엇] 타임스케일 정지.
+        // 타임스케일 정지.
         prevTimeScale = 1.0f;
         Time.timeScale = 0.0f;
 
@@ -167,7 +167,7 @@ public class LevelUpPopup : MonoBehaviour
             panelRoot.SetActive(true);
         }
 
-        // [무엇] 리롤 버튼 노출(이번 레벨업에서 아직 리롤하지 않았다면).
+        // 리롤 버튼 노출(이번 레벨업에서 아직 리롤하지 않았다면).
         if (rerollButton != null)
         {
             rerollButton.gameObject.SetActive(rerolledThisLevel == false);
@@ -178,7 +178,7 @@ public class LevelUpPopup : MonoBehaviour
     // ===== 유니크 카드 1장 뽑기 =====
     private LevelUpOptionSO PickOneUnique(HashSet<string> used)
     {
-        // [무엇] 희귀도 가중치 합 계산.
+        // 희귀도 가중치 합 계산.
         int wCommon = rarityWeights != null ? rarityWeights.GetWeight(UpgradeRarity.Common) : 1;
         int wUncommon = rarityWeights != null ? rarityWeights.GetWeight(UpgradeRarity.Uncommon) : 1;
         int wRare = rarityWeights != null ? rarityWeights.GetWeight(UpgradeRarity.Rare) : 1;
@@ -191,9 +191,9 @@ public class LevelUpPopup : MonoBehaviour
             sum = 1;
         }
 
-        int t = Random.Range(0, sum); // [무엇] t ~ U[0, sum)
+        int t = Random.Range(0, sum); // t ~ U[0, sum)
 
-        // [무엇] 누적 구간 비교로 희귀도 선택.
+        // 누적 구간 비교로 희귀도 선택.
         UpgradeRarity selected = UpgradeRarity.Common;
 
         if (t < wCommon)
@@ -213,7 +213,7 @@ public class LevelUpPopup : MonoBehaviour
             selected = UpgradeRarity.Epic;
         }
 
-        // [무엇] 1차 후보: 선택된 희귀도 ∧ 만렙 아님 ∧ 이번 제시에 미사용.
+        // 1차 후보: 선택된 희귀도 ∧ 만렙 아님 ∧ 이번 제시에 미사용.
         List<LevelUpOptionSO> candidates = new List<LevelUpOptionSO>();
 
         for (int i = 0; i < optionDatabase.Count; i = i + 1)
@@ -245,7 +245,7 @@ public class LevelUpPopup : MonoBehaviour
             candidates.Add(o);
         }
 
-        // [무엇] 폴백: 같은 기준으로 전체 희귀도에서 탐색(희귀도 구속력 완화).
+        // 폴백: 같은 기준으로 전체 희귀도에서 탐색(희귀도 구속력 완화).
         if (candidates.Count == 0)
         {
             for (int i = 0; i < optionDatabase.Count; i = i + 1)
@@ -287,7 +287,7 @@ public class LevelUpPopup : MonoBehaviour
     {
         if (playerState == null)
         {
-            // [전제] 상태 관리가 없으면 만렙 제외 기능을 비활성화.
+            // 상태 관리가 없으면 만렙 제외 기능을 비활성화.
             return false;
         }
 
@@ -296,7 +296,7 @@ public class LevelUpPopup : MonoBehaviour
             return true;
         }
 
-        // [무엇] 상태에 기록된 현재 레벨이 maxLevel 이상이면 만렙.
+        // 상태에 기록된 현재 레벨이 maxLevel 이상이면 만렙.
         if (playerState.IsMaxed(o) == true)
         {
             return true;
@@ -311,7 +311,7 @@ public class LevelUpPopup : MonoBehaviour
         if (rerolledThisLevel == false)
         {
             rerolledThisLevel = true;
-            // [무엇] 새로 뽑아 UI 갱신(타임스케일 0 유지).
+            // 새로 뽑아 UI 갱신(타임스케일 0 유지).
             Show();
         }
     }

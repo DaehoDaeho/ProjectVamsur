@@ -42,11 +42,11 @@ public class LevelUpPicker : MonoBehaviour
             return false;
         }
 
-        // [무엇] 이번 레벨업 제시에서 이미 뽑은 optionId 집합(중복 방지).
+        // 이번 레벨업 제시에서 이미 뽑은 optionId 집합(중복 방지).
         HashSet<string> used = new HashSet<string>();
 
-        // [무엇] 최대 'count'번 뽑기 시도.
-        for (int i = 0; i < count; i = i + 1)
+        // 최대 'count'번 뽑기 시도.
+        for (int i = 0; i < count; ++i)
         {
             LevelUpOptionSO pick = PickOne(used);
 
@@ -68,8 +68,8 @@ public class LevelUpPicker : MonoBehaviour
     private LevelUpOptionSO PickOne(HashSet<string> used)
     {
         // ===== 1) 희귀도 룰렛 휠 =====
-        // [무엇] 각 희귀도의 가중치 합을 만든다.
-        // [왜] 0~합 사이 임의값을 뽑아 해당 구간에 걸린 희귀도를 선택하기 위함.
+        // 각 희귀도의 가중치 합을 만든다.
+        // 0~합 사이 임의값을 뽑아 해당 구간에 걸린 희귀도를 선택하기 위함.
         int wCommon = rarityWeights.GetWeight(UpgradeRarity.Common);
         int wUncommon = rarityWeights.GetWeight(UpgradeRarity.Uncommon);
         int wRare = rarityWeights.GetWeight(UpgradeRarity.Rare);
@@ -104,7 +104,7 @@ public class LevelUpPicker : MonoBehaviour
         }
 
         // ===== 2) 희귀도 내에서 후보 필터링 =====
-        // [무엇] selected 희귀도이고, 아직 최대레벨 미만이며, 이번 제시에 아직 사용되지 않은 옵션만 후보.
+        // selected 희귀도이고, 아직 최대레벨 미만이며, 이번 제시에 아직 사용되지 않은 옵션만 후보.
         List<LevelUpOptionSO> candidates = new List<LevelUpOptionSO>();
 
         for (int i = 0; i < optionDatabase.Count; i = i + 1)
@@ -134,8 +134,8 @@ public class LevelUpPicker : MonoBehaviour
             candidates.Add(o);
         }
 
-        // [무엇] 후보가 비었다면, 희귀도 조건을 한 단계 완화해 본다(폴백).
-        // [왜] Rare/Epic이 다 만렙이면 선택을 못 할 수 있으므로 Common까지 확장해 빈 손을 방지.
+        // 후보가 비었다면, 희귀도 조건을 한 단계 완화해 본다(폴백).
+        // Rare/Epic이 다 만렙이면 선택을 못 할 수 있으므로 Common까지 확장해 빈 손을 방지.
         if (candidates.Count == 0)
         {
             for (int i = 0; i < optionDatabase.Count; i = i + 1)
