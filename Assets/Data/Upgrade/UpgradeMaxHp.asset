@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521fafea667ba6d4c88c8cd06adfd907, type: 3}
   m_Name: UpgradeMaxHp
   m_EditorClassIdentifier: 
+  optionId: maxhp
   title: "\uCD5C\uB300 HP \uC99D\uAC00 10%"
   description: "\uCD5C\uB300 HP\uB97C 10% \uC99D\uAC00\uC2DC\uCF1C \uC900\uB2E4."
   Icon: {fileID: 0}
   effectType: 3
   value: 10
+  rarity: 1
+  maxLevel: 3

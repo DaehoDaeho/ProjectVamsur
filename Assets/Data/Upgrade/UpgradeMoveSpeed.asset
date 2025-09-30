@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521fafea667ba6d4c88c8cd06adfd907, type: 3}
   m_Name: UpgradeMoveSpeed
   m_EditorClassIdentifier: 
+  optionId: movespeed
   title: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00 10%"
   description: "\uC774\uB3D9\uC18D\uB3C4\uB97C 10% \uC99D\uAC00\uC2DC\uCF1C \uC900\uB2E4."
   Icon: {fileID: 0}
   effectType: 2
   value: 10
+  rarity: 0
+  maxLevel: 3

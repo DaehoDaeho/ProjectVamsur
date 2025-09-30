@@ -11,6 +11,9 @@ public class PlayerUpgradeApplier : MonoBehaviour
     [SerializeField]
     private PlayerStats playerStats;
 
+    [SerializeField]
+    private PlayerUpgradeState playerState;
+
     public bool Apply(LevelUpOptionSO option)
     {
         if(option == null)
@@ -18,7 +21,15 @@ public class PlayerUpgradeApplier : MonoBehaviour
             return false;
         }
 
-        if(option.effectType == LevelUpEffectType.DamagePlusPercent)
+        if (playerState != null)
+        {
+            if (playerState.IsMaxed(option) == true)
+            {
+                return false;
+            }
+        }
+
+        if (option.effectType == LevelUpEffectType.DamagePlusPercent)
         {
             if(weaponShooter != null)
             {
@@ -52,6 +63,12 @@ public class PlayerUpgradeApplier : MonoBehaviour
                 playerStats.AddMaxHp((int)option.value);
             }
             return true;
+        }
+
+        // ---- 상태 레벨 증가 ----
+        if (playerState != null)
+        {
+            playerState.AddLevel(option.optionId, option.maxLevel);
         }
 
         return false;
