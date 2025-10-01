@@ -5894,6 +5894,7 @@ GameObject:
   - component: {fileID: 1410871287}
   - component: {fileID: 1410871288}
   - component: {fileID: 1410871289}
+  - component: {fileID: 1410871290}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -6155,7 +6156,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410871271}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 815cf0588386c7045983a7de6c848e36, type: 3}
   m_Name: 
@@ -6192,7 +6193,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410871271}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6371,6 +6372,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5725f8f3b56d144aa1ea5208db39c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1410871290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410871271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5145b993df5b4419834d3c4c06dd09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  strikeRadius: 1.6
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  swingCooldownSeconds: 0.35
+  damageOnHit: 10
+  maxTargetsPerStrike: 12
 --- !u!1 &1573874794
 GameObject:
   m_ObjectHideFlags: 0

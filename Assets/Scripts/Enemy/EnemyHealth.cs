@@ -80,4 +80,9 @@ public class EnemyHealth : MonoBehaviour
         dropXp.SpawnOrb();
         pooled.ReturnToPool();
     }
+
+    public bool IsDead()
+    {
+        return !isAlive;
+    }
 }

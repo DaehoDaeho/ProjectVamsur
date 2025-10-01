@@ -25,10 +25,25 @@ public class WeaponShooter : MonoBehaviour
     private float fireIntervalScale = 1.0f;
     private float damageScale = 1.0f;
 
+    private float suppressTimer = 0.0f; // [무엇] 외부 억제 타이머(근접 직후 잠깐 사격 중지)
+
+    public void SuppressFor(float seconds)
+    {
+        if (seconds > 0.0f)
+        {
+            suppressTimer = Mathf.Max(suppressTimer, seconds);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q) == true)
+        if (suppressTimer > 0.0f)
+        {
+            suppressTimer = suppressTimer - Time.deltaTime;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Q) == true)
         {
             currentWeaponIndex = currentWeaponIndex == 0 ? 1 : 0;
         }
