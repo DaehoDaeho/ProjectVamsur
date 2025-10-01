@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: -18570216987817745}
   - component: {fileID: -9122399631876021049}
   - component: {fileID: 1126063092532902222}
-  - component: {fileID: -3551810714858420792}
+  - component: {fileID: 8058705114363989213}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -542,7 +542,7 @@ MonoBehaviour:
   orbCount: 3
   xpPerOrb: 1
   scatterRadius: 0.5
---- !u!114 &-3551810714858420792
+--- !u!114 &8058705114363989213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -551,11 +551,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6515234211590476756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb430ac0559d9d48b4c3505cba1135f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6d5e1790eb8c24fbcb7c2195b24be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1089191391738012671}
-  knockStartSpeed: 6
+  body: {fileID: 7176647301891487221}
+  knockStartSpeed: 8
   knockDuration: 0.2
-  knockDecayPerSecond: 25
+  knockDecaySeconds: 25
   knockCooldownSeconds: 0.05
